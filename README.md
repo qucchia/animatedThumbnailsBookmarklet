@@ -1,3 +1,3 @@
-# Animated Thumbnails Bookmarklet
+# Custom Thumbnails
 
-Bookmarklet to set custom/animated thumbnails on Scratch
+Bookmarklet to set custom and animated thumbnails on Scratch
