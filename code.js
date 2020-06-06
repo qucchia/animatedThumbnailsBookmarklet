@@ -87,7 +87,7 @@ function animatedThumbnailMain() {
     if(!document.getElementById("uploadthumbnail")) {
         var file = document.createElement("input");
         file.id = "uploadthumbnail";
-        file.css = "visibility: hidden"
+        file.style = "visibility: hidden"
         file.setAttribute("type", "file");
         file.setAttribute("accept", "image/*");
         document.body.appendChild(file);
