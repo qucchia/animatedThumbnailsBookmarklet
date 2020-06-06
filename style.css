@@ -1,18 +1,20 @@
 #snackbar {
   visibility: hidden;
-  min-width: 250px;
-  margin-left: -125px;
-  background-color: black;
-  color: white;
-  text-align: center;
-  border-radius: 2px;
-  padding: 16px;
-  position: fixed;
-  z-index: 1;
-  left: 50%;
-  top: 50px;
- }
- 
- #snackbar.show {
+  min-height: 15rem;
+  max-height: calc(100% - 5rem);
+  height: 28rem;
+  overflow: hidden;
+}
+
+#snackbar.show {
   visibility: visible;
- } 
+}
+
+#uploadthumbnail {
+  visibility: hidden;
+}
+
+#snackbar.header {
+  box-shadow: inset 0 -1px 0 0 #3373CC;
+  background-color: #4C97FF;
+}
