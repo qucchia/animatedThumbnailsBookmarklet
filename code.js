@@ -76,6 +76,8 @@ function animatedThumbnailMain() {
     }
 
     snackBarCSS();
+    
+    window.location = '#custom-thumbnail';
 
     let snackbar = document.createElement("div");
     snackbar.id = "snackbar";
