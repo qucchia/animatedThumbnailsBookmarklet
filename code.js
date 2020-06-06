@@ -35,7 +35,6 @@ function animatedThumbnailMain() {
     
     let close = () => {
         document.getElementById('snackbar').className='';
-        window.location = '';
     }
 
     let upload = filelocation => {
@@ -82,8 +81,6 @@ function animatedThumbnailMain() {
 
     snackBarCSS();
     
-    window.location = '#custom-thumbnail';
-
     let snackbar = document.createElement("div");
     snackbar.id = "snackbar";
     document.body.appendChild(snackbar);
