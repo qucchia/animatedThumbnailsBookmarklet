@@ -12,13 +12,13 @@ if(parser.hostname === "scratch.mit.edu" && parser.pathname.startsWith("/project
 }
 
 function animatedThumbnailMain() {
-    snackBarCSS = () => {
+    let snackBarCSS = () => {
         let css = document.createElement("style");
         css.innerHTML = '#snackbar { visibility: hidden; min-width: 250px; margin-left: -125px; background-color: black; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1; left: 50%; top: 50px; } #snackbar.show { visibility: visible; } #uploadthumbnail { visibility: hidden; } ';
         document.head.appendChild(css);
     }
 
-    error = err => {
+    let error = err => {
         if(String(err).includes("parameter 1 is not of type 'Blob'.")) {
             document.getElementById("snackbar").innerHTML = 'Error - please upload a downloaded file,<br> not an image from another website.<br><a id="selectThumbnailFile">Select an image</a><br><a onclick="close();">Close</a>';
         } else {
@@ -27,18 +27,18 @@ function animatedThumbnailMain() {
         document.getElementById("selectThumbnailFile").onclick = function(){document.getElementById("uploadthumbnail").click();};
     }
 
-    getCookie = name => {
+    let getCookie = name => {
         let value = "; " + document.cookie;
         let parts = value.split("; " + name + "=");
         if (parts.length == 2) return parts.pop().split(";").shift();
     }
     
-    close = () => {
+    let close = () => {
         document.getElementById('snackbar').className='';
         window.location = '';
     }
 
-    upload = filelocation => {
+    let upload = filelocation => {
         document.getElementById("snackbar").innerHTML = "Reading file...";
 
         let reader1 = new FileReader();
