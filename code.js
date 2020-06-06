@@ -12,28 +12,33 @@ if(parser.hostname === "scratch.mit.edu" && parser.pathname.startsWith("/project
 }
 
 function animatedThumbnailMain() {
-    snackBarCSS = function() {
+    snackBarCSS = () => {
         let css = document.createElement("style");
         css.innerHTML = '#snackbar { visibility: hidden; min-width: 250px; margin-left: -125px; background-color: black; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1; left: 50%; top: 50px; } #snackbar.show { visibility: visible; } #uploadthumbnail { visibility: hidden; } ';
         document.head.appendChild(css);
     }
 
-    error = function error(err) {
+    error = err => {
         if(String(err).includes("parameter 1 is not of type 'Blob'.")) {
-            document.getElementById("snackbar").innerHTML = 'Error - please upload a downloaded file,<br> not an image from another website.<br><a id="selectThumbnailFile">Select an image</a><br><a onclick="document.getElementById(\'snackbar\').className=\'\';">Close</a>';
+            document.getElementById("snackbar").innerHTML = 'Error - please upload a downloaded file,<br> not an image from another website.<br><a id="selectThumbnailFile">Select an image</a><br><a onclick="close();">Close</a>';
         } else {
-            document.getElementById("snackbar").innerHTML = 'Error - try a smaller image.<br><a id="selectThumbnailFile">Select an image</a><br><a onclick="document.getElementById(\'snackbar\').className=\'\';">Close</a>';
+            document.getElementById("snackbar").innerHTML = 'Error - try a smaller image.<br><a id="selectThumbnailFile">Select an image</a><br><a onclick="close();">Close</a>';
         }
         document.getElementById("selectThumbnailFile").onclick = function(){document.getElementById("uploadthumbnail").click();};
     }
 
-    getCookie = function getCookie(name) {
+    getCookie = name => {
         let value = "; " + document.cookie;
         let parts = value.split("; " + name + "=");
         if (parts.length == 2) return parts.pop().split(";").shift();
     }
+    
+    close = () => {
+        document.getElementById('snackbar').className='';
+        window.location = '';
+    }
 
-    upload = function upload(filelocation) {
+    upload = filelocation => {
         document.getElementById("snackbar").innerHTML = "Reading file...";
 
         let reader1 = new FileReader();
@@ -65,7 +70,7 @@ function animatedThumbnailMain() {
                     return xhr;
                 },
                 success: function(msg) {
-                    document.getElementById("snackbar").innerHTML = 'The thumbnail was successfully changed.<br><img src="'+uploadedImage+'" height="108" width="144" style="background-color:white;"><br><a id="selectThumbnailFile">Select another image</a><br><a onclick="document.getElementById(\'snackbar\').className=\'\';">Close</a>';
+                    document.getElementById("snackbar").innerHTML = 'The thumbnail was successfully changed.<br><img src="'+uploadedImage+'" height="108" width="144" style="background-color:white;"><br><a id="selectThumbnailFile">Select another image</a><br><a onclick="close();">Close</a>';
                     document.getElementById("selectThumbnailFile").onclick = function(){document.getElementById("uploadthumbnail").click();};
                 },
                 error: function() {
@@ -82,7 +87,7 @@ function animatedThumbnailMain() {
     let snackbar = document.createElement("div");
     snackbar.id = "snackbar";
     document.body.appendChild(snackbar);
-    document.getElementById("snackbar").innerHTML = '<a id="selectThumbnailFile">Select an image</a> or drag and drop anywhere on this page.<br><a onclick="document.getElementById(\'snackbar\').className=\'\';">Close</a>';
+    document.getElementById("snackbar").innerHTML = '<a id="selectThumbnailFile">Select an image</a> or drag and drop anywhere on this page.<br><a onclick="close();">Close</a>';
     document.getElementById("selectThumbnailFile").onclick = function(){document.getElementById("uploadthumbnail").click();};
     document.getElementById("snackbar").className = "show";
 
