@@ -1,19 +1,19 @@
-var parser = document.createElement("a");
+let parser = document.createElement("a");
 parser.href = document.location.href;
 if(parser.hostname === "scratch.mit.edu" && parser.pathname.startsWith("/projects/")) {
-    var projectID = parser.pathname.replace(/\D/g,'');
-    var script = document.createElement('script');
+    let projectID = parser.pathname.replace(/\D/g,'');
+    let script = document.createElement('script');
     script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
     script.type = 'text/javascript';
-    script.onload = animThumbnailMain;
+    script.onload = animatedThumbnailMain;
     document.getElementsByTagName('head')[0].appendChild(script);
 } else {
     alert("Please click the bookmark on a Scratch project");
 }
 
-function animThumbnailMain() {
+function animatedThumbnailMain() {
     snackBarCSS = function() {
-        var css = document.createElement("style");
+        let css = document.createElement("style");
         css.innerHTML = '#snackbar { visibility: hidden; min-width: 250px; margin-left: -125px; background-color: black; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1; left: 50%; top: 50px; } #snackbar.show { visibility: visible; } ';
         document.head.appendChild(css);
     }
@@ -21,16 +21,15 @@ function animThumbnailMain() {
     error = function error(err) {
         if(String(err).includes("parameter 1 is not of type 'Blob'.")) {
             document.getElementById("snackbar").innerHTML = 'Error - please upload a downloaded file,<br> not an image from another website.<br><a id="selectThumbnailFile">Select an image</a><br><a onclick="document.getElementById(\'snackbar\').className=\'\';">Close</a>';
-            document.getElementById("selectThumbnailFile").onclick = function(){document.getElementById("uploadthumbnail").click();};
         } else {
             document.getElementById("snackbar").innerHTML = 'Error - try a smaller image.<br><a id="selectThumbnailFile">Select an image</a><br><a onclick="document.getElementById(\'snackbar\').className=\'\';">Close</a>';
-            document.getElementById("selectThumbnailFile").onclick = function(){document.getElementById("uploadthumbnail").click();};
         }
+        document.getElementById("selectThumbnailFile").onclick = function(){document.getElementById("uploadthumbnail").click();};
     }
 
     getCookie = function getCookie(name) {
-        var value = "; " + document.cookie;
-        var parts = value.split("; " + name + "=");
+        let value = "; " + document.cookie;
+        let parts = value.split("; " + name + "=");
         if (parts.length == 2) return parts.pop().split(";").shift();
     }
 
@@ -38,14 +37,14 @@ function animThumbnailMain() {
 
         document.getElementById("snackbar").innerHTML = "Reading file...";
 
-        var reader1 = new FileReader();
+        let reader1 = new FileReader();
 
         reader1.onload = function (e) {
             uploadedImage = e.target.result;
         };
         try{reader1.readAsDataURL(filelocation);}catch(err){error(err);return;}
 
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.onload = function(e2){
             $.ajax({
                 type: "POST",
@@ -79,7 +78,7 @@ function animThumbnailMain() {
 
     snackBarCSS();
 
-    var snackbar = document.createElement("div");
+    let snackbar = document.createElement("div");
     snackbar.id = "snackbar";
     document.body.appendChild(snackbar);
     document.getElementById("snackbar").innerHTML = '<a id="selectThumbnailFile">Select an image</a> or drag and drop anywhere on this page.<br><a onclick="document.getElementById(\'snackbar\').className=\'\';">Close</a>';
@@ -100,11 +99,11 @@ function animThumbnailMain() {
     }
 
     if(!document.getElementById("uploadthumbnaildrag")){
-        var dragloaded = document.createElement("span");
+        let dragloaded = document.createElement("span");
         dragloaded.id = "uploadthumbnaildrag";
         document.body.appendChild(dragloaded);
 
-        var dropper = $(document);
+        let dropper = $(document);
         dropper.on("dragover", function(e) {
             e.stopPropagation();
             e.preventDefault();
