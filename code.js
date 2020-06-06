@@ -14,9 +14,9 @@ if(parser.hostname === "scratch.mit.edu" && parser.pathname.startsWith("/project
 function customThumbnailMain() {
     function snackBarCSS() {
         let css = document.createElement("style");
-        css.innerHTML = '#snackbar { visibility: hidden; align: center; min-width: 250px; background-color: white; color: #585f76; text-align: center; border-radius: 10px; padding: 16px; position: fixed; z-index: 1; left: 50%; top: 60px;\
-                         }\
-                         #snackbar.show { visibility: visible; } #uploadthumbnail { visibility: hidden; } ';
+        css.innerHTML = '#snackbar { visibility: hidden; min-height: 15rem; max-height: calc(100% - 5rem); height: 28rem; overflow: hidden; }\
+                         #snackbar.show { visibility: visible; } #uploadthumbnail { visibility: hidden; }\
+                         #snackbar.header { box-shadow: inset 0 -1px 0 0 #3373CC; background-color: #4C97FF; }';
         document.head.appendChild(css);
     }
 
@@ -91,7 +91,7 @@ function customThumbnailMain() {
     let snackbar = document.createElement("div");
     snackbar.id = "snackbar";
     document.body.appendChild(snackbar);
-    document.getElementById("snackbar").innerHTML = '<a id="selectThumbnailFile">Select an image</a> or drag and drop anywhere on this page.<br><a onclick="close();">Close</a>';
+    document.getElementById("snackbar").innerHTML = '<div id="header">Custom Thumbnail</div><a id="selectThumbnailFile">Select an image</a> or drag and drop anywhere on this page.<br><a onclick="close();">Close</a>';
     document.getElementById("selectThumbnailFile").onclick = function(){document.getElementById("uploadthumbnail").click();};
     document.getElementById("snackbar").className = "show";
 
