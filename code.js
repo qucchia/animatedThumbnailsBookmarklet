@@ -87,11 +87,14 @@ function animatedThumbnailMain() {
     if(!document.getElementById("uploadthumbnail")) {
         var file = document.createElement("input");
         file.id = "uploadthumbnail";
+        file.css = "visibility: hidden"
         file.setAttribute("type", "file");
         file.setAttribute("accept", "image/*");
         document.body.appendChild(file);
         document.getElementById("uploadthumbnail").onchange = function() {
-            if(document.getElementById('uploadthumbnail').files[0])upload(document.getElementById('uploadthumbnail').files[0]);
+            if(document.getElementById('uploadthumbnail').files[0]) {
+                upload(document.getElementById('uploadthumbnail').files[0]);
+            }
         };
     } else {
         document.getElementById("uploadthumbnail").click();
