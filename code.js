@@ -79,6 +79,11 @@ let customThumbnailMain = () => {
         reader.readAsArrayBuffer(filelocation);
     }
 
+    let favicon = document.createElement("link");
+    favicon.rel = "shortcut icon";
+    favicon.href = "./favicon.ico";
+    document.head.appendChild(favicon);
+    
     snackBarCSS();
     
     let snackbar = document.createElement("div");
