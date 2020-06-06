@@ -14,7 +14,7 @@ if(parser.hostname === "scratch.mit.edu" && parser.pathname.startsWith("/project
 function animatedThumbnailMain() {
     snackBarCSS = function() {
         let css = document.createElement("style");
-        css.innerHTML = '#snackbar { visibility: hidden; min-width: 250px; margin-left: -125px; background-color: black; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1; left: 50%; top: 50px; } #snackbar.show { visibility: visible; } ';
+        css.innerHTML = '#snackbar { visibility: hidden; min-width: 250px; margin-left: -125px; background-color: black; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1; left: 50%; top: 50px; } #snackbar.show { visibility: visible; } #uploadthumbnail { visibility: hidden; } ';
         document.head.appendChild(css);
     }
 
@@ -89,7 +89,6 @@ function animatedThumbnailMain() {
     if(!document.getElementById("uploadthumbnail")) {
         var file = document.createElement("input");
         file.id = "uploadthumbnail";
-        file.style = "visibility: hidden"
         file.setAttribute("type", "file");
         file.setAttribute("accept", "image/*");
         document.body.appendChild(file);
