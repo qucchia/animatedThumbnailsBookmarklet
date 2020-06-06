@@ -13,11 +13,10 @@ if(parser.hostname === "scratch.mit.edu" && parser.pathname.startsWith("/project
 
 function customThumbnailMain() {
     function snackBarCSS() {
-        let css = document.createElement("style");
-        css.innerHTML = '#snackbar { visibility: hidden; min-height: 15rem; max-height: calc(100% - 5rem); height: 28rem; overflow: hidden; }\
-                         #snackbar.show { visibility: visible; } #uploadthumbnail { visibility: hidden; }\
-                         #snackbar.header { box-shadow: inset 0 -1px 0 0 #3373CC; background-color: #4C97FF; }';
-        document.head.appendChild(css);
+        let link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "style.css";
+        document.head.appendChild(link);
     }
 
     function error() {
