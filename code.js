@@ -15,7 +15,7 @@ function customThumbnailMain() {
     function snackBarCSS() {
         let css = document.createElement("style");
         css.innerHTML = '#snackbar { visibility: hidden; align: center; min-width: 250px; background-color: white; color: #585f76; text-align: center; border-radius: 10px; padding: 16px; position: fixed; z-index: 1; left: 50%; top: 60px;\
-                         min-height: 15rem; max-height: calc(100% - 5rem); height: 28rem; overflow: hidden; }\
+                         }\
                          #snackbar.show { visibility: visible; } #uploadthumbnail { visibility: hidden; } ';
         document.head.appendChild(css);
     }
