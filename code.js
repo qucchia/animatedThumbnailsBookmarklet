@@ -11,14 +11,14 @@ if(parser.hostname === "scratch.mit.edu" && parser.pathname.startsWith("/project
     alert("Please click the bookmark on a Scratch project");
 }
 
-let customThumbnailMain = () => {
-    let snackBarCSS = () => {
+function customThumbnailMain() {
+    function snackBarCSS() {
         let css = document.createElement("style");
         css.innerHTML = '#snackbar { visibility: hidden; border-radius: 10px; min-width: 250px; margin-left: -125px; background-color: white; color: #585f76; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1; left: 50%; top: 50px; } #snackbar.show { visibility: visible; } #uploadthumbnail { visibility: hidden; } ';
         document.head.appendChild(css);
     }
 
-    let error = err => {
+    function error() {
         if(String(err).includes("parameter 1 is not of type 'Blob'.")) {
             document.getElementById("snackbar").innerHTML = 'Error - please upload a downloaded file,<br> not an image from another website.<br><a id="selectThumbnailFile">Select an image</a><br><a onclick="this.close">Close</a>';
         } else {
@@ -27,17 +27,17 @@ let customThumbnailMain = () => {
         document.getElementById("selectThumbnailFile").onclick = function(){document.getElementById("uploadthumbnail").click();};
     }
 
-    let getCookie = name => {
+    function getCookie(name) {
         let value = "; " + document.cookie;
         let parts = value.split("; " + name + "=");
         if (parts.length == 2) return parts.pop().split(";").shift();
     }
     
-    let close = () => {
+    function close() {
         document.getElementById('snackbar').className='';
     }
 
-    let upload = filelocation => {
+    function upload(fileLocation) {
         document.getElementById("snackbar").innerHTML = "Reading file...";
 
         let reader1 = new FileReader();
